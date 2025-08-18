@@ -1,0 +1,86 @@
+Step 1: Define the Problem
+We want to maximize the function:
+
+f(x)=x2,0≤x≤31
+Since x can take only integer values between 0 and 31, we represent x in 5-bit binary format (because 25=32).
+
+Step 2: Initialize Parameters
+Chromosome length: 5 bits
+
+Population size: 6 individuals
+
+Crossover rate: 0.8 (80% chance of crossover)
+
+Mutation rate: 0.01 (1% chance per bit to flip)
+
+Generations: 20
+
+Step 3: Generate Initial Population
+Randomly create 6 binary strings of length 5.
+
+Example: ["10101", "11100", "00011", ...]
+
+Each string corresponds to a candidate solution.
+
+Step 4: Evaluate Fitness
+Convert each binary string into an integer (e.g., "10101" → 21).
+
+Apply the objective function f(x)=x2.
+
+Example: if x=21, then f(21)=441.
+
+Store these fitness values.
+
+Step 5: Selection (Roulette Wheel Method)
+Calculate total fitness of population.
+
+Choose parents randomly, but with probability proportional to their fitness (fitter solutions have a higher chance of being selected).
+
+Example: If fitness values are [10, 30, 60], the last one is most likely to be chosen.
+
+Step 6: Crossover
+Take two parents and perform single-point crossover with probability 0.8.
+
+Example:
+
+Parent1: 10101
+
+Parent2: 11100
+
+Crossover at position 2 →
+
+Child1 = 10|100
+
+Child2 = 11|101
+
+Step 7: Mutation
+Each bit in the offspring may flip with probability 0.01.
+
+Example:
+
+Before: 10101
+
+After mutation: 10111 (last bit flipped)
+
+Step 8: Iteration
+Replace the old population with the new offspring.
+
+Repeat steps 4 → 7 for 20 generations.
+
+Track the best solution at each generation.
+
+Step 9: Output
+At the end:
+
+Print the best solution found (chromosome, decoded x, and its f(x)).
+
+Since f(x)=x2, the maximum should be at x=31, where f(31)=961.
+
+Sample Run (Typical Output)
+Gen 1: Best x = 27, f(x) = 729
+Gen 2: Best x = 29, f(x) = 841
+Gen 3: Best x = 30, f(x) = 900
+Gen 4: Best x = 31, f(x) = 961
+...
+Final Best Solution:
+x = 31, f(x) = 961
